@@ -10,7 +10,9 @@ const BookList = styled.div`
     }
 `;
 
-const BookSearch = ({listElements, setListElements}) => {
+const BookSearch = () => {
+    
+    const [listElements, setListElements] = useState([]);
     const [searchParams, setSearchParams] = useState({
         firstName: "Ludwig",
         lastName: "Wittgenstein"

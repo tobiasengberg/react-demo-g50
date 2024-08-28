@@ -1,13 +1,51 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
+import Home from './pages/Home';
+import Book from './components/Book';
+import Root from './pages/Root';
+import BookSearch from './components/BookSearch';
+import SavedSearches from './components/SavedSearches';
+import {loader} from "./components/SavedSearches";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    children: [
+      {
+        index: true,
+        element: <Home />
+      },
+      {
+        path: "book",
+        element: <Book />,
+        children: [
+          {
+            index: true,
+            element: <h1>Book section</h1>
+          },
+          {
+            path: "search",
+            element: <BookSearch />
+          },
+          {
+            path: "saved",
+            loader: loader,
+            element: <SavedSearches />
+          }
+        ]
+      }
+    ]
+  }
+])
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

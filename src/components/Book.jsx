@@ -1,24 +1,18 @@
 import { useEffect, useState } from "react";
 import BookSearch from './BookSearch';
 import SavedSearches from './SavedSearches';
-import axios from "axios";
+import { Outlet, Link } from "react-router-dom";
 
 const Book = () => {
-    const [listElements, setListElements] = useState([]);
-    const [savedSearches, setSavedSearches] = useState([]);
-    
-    useEffect(() => {
-        axios.get('/books')
-        .then(response => setSavedSearches(response.data));
-    }, [])
-    
+
     return (
-        <div>
-            <SavedSearches savedSearches={savedSearches} setSavedSearches={setSavedSearches}/>
-            <BookSearch 
-            listElements={listElements} 
-            setListElements={setListElements} />
-        </div>
+        <>
+            <header>
+                <Link to="/book/search">Search for books</Link>
+                <Link to="/book/saved">Saved searches</Link>
+            </header>
+            <Outlet />
+        </>
     )
 }
 

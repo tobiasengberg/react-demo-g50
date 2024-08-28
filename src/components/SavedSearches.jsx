@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useLoaderData } from "react-router-dom";
 
 const BookList = styled.div`
     display: flex;
@@ -8,9 +11,20 @@ const BookList = styled.div`
     }
 `;
 
-const SavedSearches = ({savedSearches,setSavedSearches}) => {
+export const loader = async () => {
+    return await axios.get('/books')
+    .then(response => response.data);
+}
 
-    console.log(savedSearches);
+const SavedSearches = () => {
+    // const [savedSearches, setSavedSearches] = useState([]);
+    // useEffect(() => {
+    //     axios.get('/books')
+    //     .then(response => setSavedSearches(response.data));
+    // }, [])
+
+    const savedSearches = useLoaderData();
+    
     return (
         <div>
             <h1>Saved searches</h1>
