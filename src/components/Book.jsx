@@ -7,10 +7,11 @@ const Book = () => {
 
     return (
         <>
-            <header>
-                <Link to="/book/search">Search for books</Link>
-                <Link to="/book/saved">Saved searches</Link>
-            </header>
+            <nav>
+                <h3>Books</h3>
+                <Link to="/book/search">Search</Link>
+                <Link to="/book/saved">Saved</Link>
+            </nav>
             <Outlet />
         </>
     )

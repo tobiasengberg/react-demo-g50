@@ -1,8 +1,58 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+    font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -12,41 +62,58 @@ code {
     monospace;
 }
 
-
+a:visited {
+  color: blue;
+}
 
 #site-container > header {
+  padding: 1rem 0 1.4rem 2rem;
   display: flex;
   flex-direction: row;
-  background-color: hsl(40, 9%, 19%);
   min-height: 50px;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: baseline;
+  border-bottom: 1px dotted #666;
+}
+
+#site-container > header span.site-logo {
+  font-size: 2.4rem;
+  font-weight: 600;
 }
 
 #site-container > header a {
-  color: white;
   font-size: 1.4rem;
   padding: 0 3rem;
-  text-decoration: none;
+  text-underline-offset: 4px;
 }
-
 
 #site-container > main {
-  
-}
-
-#site-container > main > header {
-  background-color: hsl(34, 78%, 91%);
+  padding: 3rem 2rem;
   display: flex;
   flex-direction: row;
-  min-height: 50px;
-  justify-content: center;
 }
 
-#site-container > main > header > a {
-  color: hsl(34, 78%, 12%);
-  font-size: 1.4rem;
-  padding: 0 3rem;
+#site-container > main > nav {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: flex-start;
+}
+
+#site-container > main > nav > h3 {
+  font-weight: 800;
+  font-size: 1.3rem;
+  padding-bottom: .6rem;
+}
+
+#site-container > main > nav > a {
+  font-size: 1.3rem;
   text-decoration: none;
+  padding-top: .3rem;
+}
+
+#site-container > main > div {
+  padding-left: 8rem;
 }
 
 #site-container > footer {

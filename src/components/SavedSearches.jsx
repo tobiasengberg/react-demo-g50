@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
 import axios from "axios";
 import { useLoaderData } from "react-router-dom";
+import { FaMinusCircle } from "react-icons/fa";
 
 const BookList = styled.div`
     display: flex;
@@ -17,19 +17,20 @@ export const loader = async () => {
 }
 
 const SavedSearches = () => {
-    // const [savedSearches, setSavedSearches] = useState([]);
-    // useEffect(() => {
-    //     axios.get('/books')
-    //     .then(response => setSavedSearches(response.data));
-    // }, [])
 
     const savedSearches = useLoaderData();
     
+    const DeleteItem = async (id) => {
+        await axios.delete(`/books/${id}`)
+        .then(console.log("deleted?!"));
+    }
+
     return (
         <div>
             <h1>Saved searches</h1>
             {savedSearches != undefined && savedSearches.map((savedItem, index) => (
                 <BookList key={index}>
+                    <FaMinusCircle onClick={() => DeleteItem(savedItem.id)}/>
                     <p >{savedItem.creator}</p>
                     <p >{savedItem.date}</p>
                     <p >{savedItem.title}</p>

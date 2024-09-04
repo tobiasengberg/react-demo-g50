@@ -10,6 +10,7 @@ import Root from './pages/Root';
 import BookSearch from './components/BookSearch';
 import SavedSearches from './components/SavedSearches';
 import {loader} from "./components/SavedSearches";
+import BookHome from './components/BookHome';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <h1>Book section</h1>
+            element: <BookHome />
           },
           {
             path: "search",

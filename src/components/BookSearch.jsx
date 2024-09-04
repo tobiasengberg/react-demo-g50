@@ -13,6 +13,8 @@ const BookList = styled.div`
 const BookSearch = () => {
     
     const [listElements, setListElements] = useState([]);
+    const [newFirst, setNewFirst] = useState();
+    const [newLast, setNewLast] = useState();
     const [searchParams, setSearchParams] = useState({
         firstName: "Ludwig",
         lastName: "Wittgenstein"
@@ -27,10 +29,11 @@ const BookSearch = () => {
         });
     }, [searchParams]);
 
+
     const changeSearch = () => {
         setSearchParams({
-            firstName: "Bertrand",
-            lastName: "Russell"
+            firstName: newFirst,
+            lastName: newLast
         })
     };
 
@@ -55,7 +58,17 @@ const BookSearch = () => {
                     <p >{listItem.publisher}</p>
                 </BookList>
             ))}
-            <button onClick={changeSearch}>Change</button>
+            <form>
+                <label htmlFor="new-first">First name:</label>
+                <input id="new-first" type="text" 
+                onChange={e => setNewFirst( e.target.value)} 
+                value={newFirst}/>
+                <label htmlFor="new-last">Last name:</label>
+                <input id="new-last" type="text"
+                onChange={e => setNewLast( e.target.value)} 
+                value={newLast}/>
+            </form>
+            <button onClick={changeSearch}>Search</button>
         </div>
     )
 }
